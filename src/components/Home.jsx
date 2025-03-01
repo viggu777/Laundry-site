@@ -1,5 +1,6 @@
 // src/components/Home.js
 import React from 'react';
+import LaundryBookingForm from './LaundryBookingForm';
 
 const Home = () => {
   return (
@@ -9,6 +10,9 @@ const Home = () => {
         <div className="bg-black bg-opacity-50 h-full flex items-center justify-center">
           <h1 className="text-white text-5xl font-bold">Welcome to Our Laundry Service</h1>
         </div>
+      </section>
+      <section className="bg-cover bg-center h-screen" style={{ backgroundImage: `url('https://source.unsplash.com/1600x900/?laundry')` }}>
+       <LaundryBookingForm />
       </section>
 
       {/* Why Choose Us Section */}
