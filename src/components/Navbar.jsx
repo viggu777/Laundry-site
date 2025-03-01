@@ -23,6 +23,7 @@ const Navbar = () => {
         <Link className="text-white hover:underline" to="/">Home</Link>
         <Link className="text-white hover:underline" to="/about">About</Link>
         <Link className="text-white hover:underline" to="/contact">Contact</Link>
+        <Link className="text-white hover:underline" to="/laundry-booking-form">Book</Link>
         {currentUser ? (
           <>
             <span className="text-white font-bold">

@@ -13,6 +13,7 @@ import AdminLogin from './components/AdminLogin';
 import AdminPage from './components/AdminPage';
 import PrivateRoute from './routes/PrivateRoute';
 import Footer from './components/Footer';
+import LaundryBookingForm from './components/LaundryBookingForm';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="//laundry-booking-form" element={<LaundryBookingForm />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/admin-login" element={<AdminLogin />} />

@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { db } from '../firebase';
-import { doc, setDoc } from 'firebase/firestore';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { db } from "../firebase";
+import { doc, setDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 const LaundryBookingForm = () => {
-  const [category, setCategory] = useState('');
-  const [item, setItem] = useState('');
+  const [category, setCategory] = useState("");
+  const [item, setItem] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [selectedItems, setSelectedItems] = useState([]);
   const [error, setError] = useState(null);
@@ -13,15 +13,15 @@ const LaundryBookingForm = () => {
 
   // Categories and items
   const categories = {
-    'Regular Cloths': ['Shirt', 'T-shirt', 'Jeans', 'Trousers'],
-    'HouseHold Cloths': ['Bedsheet', 'Curtain', 'Tablecloth', 'Towel'],
-    'Luxury Cloths': ['Saree', 'Silk Dress', 'Leather Jacket', 'Woolen Coat'],
+    "Regular Cloths": ["Shirt", "T-shirt", "Jeans", "Trousers"],
+    "HouseHold Cloths": ["Bedsheet", "Curtain", "Tablecloth", "Towel"],
+    "Luxury Cloths": ["Saree", "Silk Dress", "Leather Jacket", "Woolen Coat"],
   };
 
   // Handle category selection
   const handleCategoryChange = (e) => {
     setCategory(e.target.value);
-    setItem(''); // Reset item when category changes
+    setItem(""); // Reset item when category changes
   };
 
   // Handle item selection
@@ -37,15 +37,15 @@ const LaundryBookingForm = () => {
   // Add item to the list
   const handleAddItem = () => {
     if (!category || !item || quantity < 1) {
-      setError('Please select a category, item, and quantity.');
+      setError("Please select a category, item, and quantity.");
       return;
     }
 
     const newItem = { category, item, quantity };
     setSelectedItems([...selectedItems, newItem]);
     setError(null);
-    setCategory('');
-    setItem('');
+    setCategory("");
+    setItem("");
     setQuantity(1);
   };
 
@@ -59,21 +59,21 @@ const LaundryBookingForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (selectedItems.length === 0) {
-      setError('Please add at least one item.');
+      setError("Please add at least one item.");
       return;
     }
 
     try {
       const orderId = Date.now().toString(); // Generate a unique order ID
-      await setDoc(doc(db, 'orders', orderId), {
+      await setDoc(doc(db, "orders", orderId), {
         items: selectedItems,
-        status: 'Pending',
+        status: "Pending",
         createdAt: new Date().toISOString(),
       });
-      alert('Order placed successfully!');
-      navigate('/');
+      alert("Order placed successfully!");
+      navigate("/");
     } catch (err) {
-      setError('Failed to place order. Please try again.');
+      setError("Failed to place order. Please try again.");
     }
   };
 
@@ -94,7 +94,9 @@ const LaundryBookingForm = () => {
 
         {/* Category Selection */}
         <div className="mb-6">
-          <label className="block text-sm font-medium text-gray-700 mb-2">Select Category</label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Select Category
+          </label>
           <select
             value={category}
             onChange={handleCategoryChange}
@@ -112,7 +114,9 @@ const LaundryBookingForm = () => {
         {/* Item Selection */}
         {category && (
           <div className="mb-6">
-            <label className="block text-sm font-medium text-gray-700 mb-2">Select Item</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Select Item
+            </label>
             <select
               value={item}
               onChange={handleItemChange}
@@ -131,7 +135,9 @@ const LaundryBookingForm = () => {
         {/* Quantity Input */}
         {item && (
           <div className="mb-6">
-            <label className="block text-sm font-medium text-gray-700 mb-2">Quantity</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Quantity
+            </label>
             <input
               type="number"
               min="1"
@@ -159,9 +165,13 @@ const LaundryBookingForm = () => {
             <h3 className="text-xl font-bold mb-4">Selected Items</h3>
             <ul className="space-y-4">
               {selectedItems.map((selectedItem, index) => (
-                <li key={index} className="flex justify-between items-center bg-gray-50 p-4 rounded-lg">
+                <li
+                  key={index}
+                  className="flex justify-between items-center bg-gray-50 p-4 rounded-lg"
+                >
                   <span>
-                    {selectedItem.item} ({selectedItem.quantity}) - {selectedItem.category}
+                    {selectedItem.item} ({selectedItem.quantity}) -{" "}
+                    {selectedItem.category}
                   </span>
                   <button
                     type="button"
