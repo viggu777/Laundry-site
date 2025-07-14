@@ -4,17 +4,19 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { AuthProvider } from "./context/AuthContext";
 import Navbar from "./components/Navbar";
-import Home from "./components/Home";
-import About from "./components/About";
-import Contact from "./components/Contact";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
-import AdminLogin from "./components/AdminLogin";
-import AdminPage from "./components/AdminPage";
-import PrivateRoute from "./routes/PrivateRoute";
 import Footer from "./components/Footer";
-import LaundryBookingForm from "./components/LaundryBookingForm";
+import PrivateRoute from "./routes/PrivateRoute";
 import ProtectedRoute from "./routes/ProtectedRoute";
+
+// Pages
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import AdminLogin from "./pages/AdminLogin";
+import AdminPage from "./pages/AdminPage";
+import LaundryBookingForm from "./pages/LaundryBookingForm";
 
 function App() {
   return (
